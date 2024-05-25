@@ -2,10 +2,10 @@
 This project combines a Pulse Oximeter sensor with an LCD display and a DHT11 sensor to monitor pulse rate, SpO2, temperature, and humidity. It's designed for educational purposes.
 
 # Components
-Arduino UNO
-MAX30100 Pulse Oximeter Sensor
-DHT11 Sensor
-I2C LCD Display (16x2)
+Arduino UNO,
+MAX30100 Pulse Oximeter Sensor,
+DHT11 Sensor,
+I2C LCD Display (16x2),
 Wires and Breadboard
 # Setup
 Circuit Connection: Wire up the components as per the provided circuit diagram.
