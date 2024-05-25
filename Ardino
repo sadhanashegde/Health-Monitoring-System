@@ -49,27 +49,6 @@ void loop() {
     // Update PulseOximeter
     pox.update();
 
-  // Read pulse rate and SpO2 levels
-        float heartRate = pox.getHeartRate();
-        float spo2 = pox.getSpO2();
-
-        String healthStatus;
-    if (spo2 >= 95 && heartRate >= 60 && heartRate <= 100) {
-        healthStatus = "Healthy";
-    } else if (spo2 >= 90 && heartRate >= 50 && heartRate <= 110) {
-        healthStatus = "Moderately Healthy";
-    } else {
-        healthStatus = "Unhealthy";
-    }
-
-  // Display health status on LCD
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Health Status:");
-    lcd.setCursor(0, 1);
-    lcd.print(healthStatus);
-    
-
     // Display Pulse Rate and SpO2 values
     if (millis() - tsLastReportPulse > REPORTING_PERIOD_MS) {
         // Read pulse rate and SpO2 levels
@@ -108,6 +87,25 @@ void loop() {
         float temperature = dht.readTemperature();
         float humidity = dht.readHumidity();
 
+        // Print values to the serial monitor
+        Serial.print("Temperature: ");
+        Serial.print(temperature);
+        Serial.println(" °C");
+        Serial.print("Humidity: ");
+        Serial.print(humidity);
+        Serial.println(" %");
+
+        // Print values to the LCD
+        lcd.clear();
+        lcd.setCursor(0, 0);
+        lcd.print("Temp: ");
+        lcd.print(temperature);
+        lcd.print("C");
+
+        lcd.setCursor(0, 1);
+        lcd.print("Humidity: ");
+        lcd.print(humidity);
+        lcd.print("%");
 
         tsLastReportTemp = millis(); // Update last report time for temperature and humidity
     }
